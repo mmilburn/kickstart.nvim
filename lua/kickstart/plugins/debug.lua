@@ -23,6 +23,9 @@ return {
     'mason-org/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
+    -- Shows virtual text for current frame during debugging
+    'theHamsta/nvim-dap-virtual-text',
+
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
   },
@@ -96,7 +99,8 @@ return {
       -- online, please don't ask me how to install them :)
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
+        'delve', -- Go debugger
+        'codelldb', -- C/C++/Rust/Assembly debugger
       },
     }
 
@@ -146,5 +150,34 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+
+    -- Assembly language debugging configuration
+    -- Uses CodeLLDB adapter for debugging assembly programs
+    dap.configurations.asm = {
+      {
+        name = 'Launch (CodeLLDB)',
+        type = 'codelldb',
+        request = 'launch',
+        program = function()
+          local default = vim.fn.getcwd() .. '/build/main'
+          return vim.fn.input('Path to executable: ', default, 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+      },
+    }
+
+    -- Optional: Build before debug for Assembly projects
+    -- Uncomment and customize this keymap if you want F5 to build before debugging:
+    --
+    -- vim.keymap.set('n', '<F5>', function()
+    --   local out = vim.fn.system { 'make', '-j' }
+    --   if vim.v.shell_error ~= 0 then
+    --     vim.notify('Build failed; not starting debugger.\n\n' .. out, vim.log.levels.ERROR)
+    --     return
+    --   end
+    --   require('dap').continue()
+    -- end, { desc = 'DAP: Build + Continue', buffer = true })
   end,
 }

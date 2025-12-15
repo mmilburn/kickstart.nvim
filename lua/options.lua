@@ -77,4 +77,12 @@ vim.o.confirm = true
 -- Highlight max chars per line
 -- vim.o.colorcolumn = '120'
 
+-- Filetype detection for Assembly files
+vim.filetype.add {
+  extension = {
+    asm = 'asm',
+    inc = 'asm', -- .inc files are also Assembly
+  },
+}
+
 -- vim: ts=2 sts=2 sw=2 et

@@ -249,6 +249,16 @@ return {
         -- Structure is identical to the mason table from above.
         others = {
           -- dartls = {},
+
+          -- Assembly Language LSP (installed via Mason but configured with new API)
+          asm_lsp = {
+            cmd = { 'asm-lsp' },
+            filetypes = { 'asm' },
+            root_dir = function(fname)
+              local util = require 'lspconfig.util'
+              return util.root_pattern('.git', 'Makefile', 'main.asm', 'build.zig', 'CMakeLists.txt')(fname)
+            end,
+          },
         },
       }
 
@@ -268,6 +278,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers.mason or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'asm-lsp', -- Assembly Language Server
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
