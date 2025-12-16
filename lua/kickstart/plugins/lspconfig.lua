@@ -31,6 +31,7 @@ return {
       },
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'nvim-java/nvim-java',
 
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
@@ -230,6 +231,7 @@ return {
           -- But for many setups, the LSP (`ts_ls`) will work just fine
           -- ts_ls = {},
           --
+          jdtls = {},
           lua_ls = {
             -- cmd = { ... },
             -- filetypes = { ... },
