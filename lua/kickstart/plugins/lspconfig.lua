@@ -230,7 +230,11 @@ return {
           --
           -- But for many setups, the LSP (`ts_ls`) will work just fine
           -- ts_ls = {},
-          --
+          asm_lsp = {
+            cmd = { 'asm-lsp' },
+            filetypes = { 'asm' },
+            root_dir = require('lspconfig').util.root_pattern('.git', 'Makefile', 'main.asm', 'build.zig', 'CMakeLists.txt'),
+          },
           jdtls = {},
           lua_ls = {
             -- cmd = { ... },
@@ -251,16 +255,6 @@ return {
         -- Structure is identical to the mason table from above.
         others = {
           -- dartls = {},
-
-          -- Assembly Language LSP (installed via Mason but configured with new API)
-          asm_lsp = {
-            cmd = { 'asm-lsp' },
-            filetypes = { 'asm' },
-            root_dir = function(fname)
-              local util = require 'lspconfig.util'
-              return util.root_pattern('.git', 'Makefile', 'main.asm', 'build.zig', 'CMakeLists.txt')(fname)
-            end,
-          },
         },
       }
 

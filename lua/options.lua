@@ -81,7 +81,9 @@ vim.o.confirm = true
 vim.filetype.add {
   extension = {
     asm = 'asm',
-    inc = 'asm', -- .inc files are also Assembly
+    inc = 'asm',
+    s = 'asm',
+    S = 'asm',
   },
 }
 
