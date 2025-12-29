@@ -78,13 +78,13 @@ vim.o.confirm = true
 -- vim.o.colorcolumn = '120'
 
 -- Filetype detection for Assembly files
-vim.filetype.add {
-  extension = {
-    asm = 'asm',
-    inc = 'asm',
-    s = 'asm',
-    S = 'asm',
-  },
-}
+-- vim.filetype.add {
+--   extension = {
+--     asm = 'asm',
+--     inc = 'asm',
+--     s = 'asm',
+--     S = 'asm',
+--   },
+-- }
 
 -- vim: ts=2 sts=2 sw=2 et
