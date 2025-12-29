@@ -12,6 +12,7 @@ return {
         markdown = { 'markdownlint' },
         dockerfile = { 'hadolint' },
         python = { 'flake8' },
+        shell = { 'shellcheck' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
