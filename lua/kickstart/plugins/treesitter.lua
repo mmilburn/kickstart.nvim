@@ -8,7 +8,7 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
-      ensure_installed = { 'asm', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'java' },
+      ensure_installed = { 'asm', 'bash', 'c', 'diff', 'dockerfile', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'java', 'yaml' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {

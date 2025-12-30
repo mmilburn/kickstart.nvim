@@ -237,7 +237,17 @@ return {
             filetypes = { 'asm', 'inc', 's', 'S' },
           },
           bashls = {},
+          dockerls = {},
           jdtls = {},
+          yamlls = {
+            settings = {
+              yaml = {
+                schemas = {
+                  ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.{yml,yaml}",
+                },
+              },
+            },
+          },
           lua_ls = {
             -- cmd = { ... },
             -- filetypes = { ... },
