@@ -55,12 +55,49 @@ return {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          -- Skip unnecessary directories for better performance
+          file_ignore_patterns = {
+            '^.git/',
+            '^node_modules/',
+            '^venv/',
+            '^__pycache__/',
+            '%.class$',
+            '^target/',
+            '^build/',
+            '^dist/',
+          },
+
+          -- Optimized ripgrep arguments
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden',
+            '--glob=!.git/',
+          },
+
+          -- Shorter path display
+          path_display = { 'truncate' },
+
+          mappings = {
+            i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+            find_command = { 'fd', '--type', 'f', '--hidden', '--exclude', '.git' },
+          },
+          buffers = {
+            sort_lastused = true,
+            previewer = false, -- Faster, buffers don't need preview
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
