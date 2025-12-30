@@ -27,5 +27,11 @@ return {
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
+  { -- Show code context at top of window
+    'nvim-treesitter/nvim-treesitter-context',
+    opts = {
+      max_lines = 3, -- How many lines of context to show
+    },
+  },
 }
 -- vim: ts=2 sts=2 sw=2 et
