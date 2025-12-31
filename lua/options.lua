@@ -77,14 +77,11 @@ vim.o.confirm = true
 -- Highlight max chars per line
 -- vim.o.colorcolumn = '120'
 
--- Filetype detection for Assembly files
--- vim.filetype.add {
---   extension = {
---     asm = 'asm',
---     inc = 'asm',
---     s = 'asm',
---     S = 'asm',
---   },
--- }
-
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'gitcommit', 'text' },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = 'en_us'
+  end,
+})
 -- vim: ts=2 sts=2 sw=2 et
