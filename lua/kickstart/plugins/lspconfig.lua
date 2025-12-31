@@ -223,7 +223,7 @@ return {
         --  Feel free to add/remove any LSPs here that you want to install via Mason. They will automatically be installed and setup.
         mason = {
           -- clangd = {},
-          -- gopls = {},
+          gopls = {},
           -- pyright = {},
           -- rust_analyzer = {},
           -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -239,11 +239,33 @@ return {
           bashls = {},
           dockerls = {},
           jdtls = {},
+          basedpyright = {
+            settings = {
+              basedpyright = {
+                analysis = {
+                  autoSearchPaths = true,
+                  useLibraryCodeForTypes = true,
+                },
+              },
+            },
+          },
+          rust_analyzer = {
+            settings = {
+              ['rust-analyzer'] = {
+                cargo = {
+                  allFeatures = true,
+                },
+                checkOnSave = {
+                  command = 'clippy',
+                },
+              },
+            },
+          },
           yamlls = {
             settings = {
               yaml = {
                 schemas = {
-                  ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.{yml,yaml}",
+                  ['https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json'] = 'docker-compose*.{yml,yaml}',
                 },
               },
             },
