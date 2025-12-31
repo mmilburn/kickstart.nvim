@@ -53,6 +53,8 @@ require('lazy').setup({
 
   require 'kickstart.plugins.refactoring',
 
+  require 'kickstart.plugins.nvim-notify',
+
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
