@@ -49,7 +49,7 @@ require('lazy').setup({
 
   require 'kickstart.plugins.nvim-java',
 
-  require 'kickstart.plugins.fugitive',
+  require 'kickstart.plugins.neogit',
 
   require 'kickstart.plugins.refactoring',
 
