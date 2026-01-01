@@ -73,17 +73,36 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Treat camelCase as word boundaries in spell checking.
+vim.opt.spelloptions:append 'camel'
+
 -- Disable line wrapping
 -- vim.o.wrap = false
 
 -- Highlight max chars per line
 -- vim.o.colorcolumn = '120'
 
+local function enable_spell()
+  vim.opt_local.spell = true
+  vim.opt_local.spelllang = 'en_us'
+end
+
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'markdown', 'gitcommit', 'text' },
-  callback = function()
-    vim.opt_local.spell = true
-    vim.opt_local.spelllang = 'en_us'
+  pattern = { 'asciidoc', 'gitcommit', 'gitrebase', 'NeogitCommitMessage', 'jj', 'jjdescription', 'mail', 'markdown', 'text' },
+  callback = enable_spell,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function(args)
+    if vim.bo[args.buf].buftype ~= '' then
+      return
+    end
+
+    local ft = vim.bo[args.buf].filetype
+    local ok, query = pcall(vim.treesitter.query.get, ft, 'spell')
+    if ok and query ~= nil then
+      enable_spell()
+    end
   end,
 })
 -- vim: ts=2 sts=2 sw=2 et
