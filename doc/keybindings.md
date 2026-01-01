@@ -34,7 +34,7 @@ Press Space to see available keybindings organized by category (thanks to which-
 | `<C-k>` | Normal | Move focus to upper window | keymaps.lua:35 |
 | `<C-l>` | Normal | Move focus to right window | keymaps.lua:33 |
 | `<Esc><Esc>` | Terminal | Exit terminal mode | keymaps.lua:17 |
-| `<leader>q` | Normal | Open diagnostic quickfix list | keymaps.lua:9 |
+| `<leader>q` | Normal | Open diagnostic location list | keymaps.lua:9 |
 
 ## LSP Operations
 
@@ -140,25 +140,18 @@ All Git hunk operations start with `<leader>h`.
 | `<leader>hr` | Normal | Reset hunk | gitsigns.lua:72 |
 | `<leader>hr` | Visual | Reset selected hunk | gitsigns.lua:67 |
 | `<leader>hS` | Normal | Stage entire buffer | gitsigns.lua:73 |
-| `<leader>hu` | Normal | Undo stage hunk | gitsigns.lua:74 |
+| `<leader>hu` | Normal | Stage hunk | gitsigns.lua:74 |
 | `<leader>hR` | Normal | Reset entire buffer | gitsigns.lua:75 |
 | `<leader>hp` | Normal | Preview hunk diff | gitsigns.lua:76 |
 | `<leader>hb` | Normal | Show blame for line | gitsigns.lua:77 |
 | `<leader>hd` | Normal | Diff against index | gitsigns.lua:78 |
 | `<leader>hD` | Normal | Diff against last commit | gitsigns.lua:79 |
 
-### Git Commands (fugitive)
+### Neogit
 
-| Command | Action |
-|---------|--------|
-| `:Git` or `:G` | Open Git interface |
-| `:Git status` | Show Git status |
-| `:Git commit` | Create commit |
-| `:Git push` | Push changes |
-| `:Git pull` | Pull changes |
-| `:Gdiffsplit` | View diff in split |
-| `:Git blame` | Show blame annotations |
-| `:GBrowse` | Open in GitHub (if configured) |
+| Key | Mode | Action | Source |
+|-----|------|--------|--------|
+| `<leader>gg` | Normal | Open Neogit | neogit.lua:10 |
 
 ## Treesitter Textobjects
 
@@ -170,7 +163,7 @@ Use in Visual mode or with operators (`d`, `y`, `c`, etc.).
 
 | Key | Mode | Action | Source |
 |-----|------|--------|--------|
-| `<C-s>` | Visual | Expand selection to larger node | treesitter.lua:26 |
+| `<C-s>` | Normal, Visual | Expand selection to larger node | treesitter.lua:26 |
 | `<Backspace>` | Visual | Shrink selection | treesitter.lua:29 |
 | `af` | Operator, Visual | Around function (includes signature) | treesitter.lua:57 |
 | `if` | Operator, Visual | Inside function (body only) | treesitter.lua:58 |
@@ -272,7 +265,7 @@ DAP (Debug Adapter Protocol) keybindings.
 
 | Key | Mode | Action | Source |
 |-----|------|--------|--------|
-| `\` | Normal | Toggle Neo-tree file explorer | neo-tree.lua |
+| `\` | Normal | Reveal/close Neo-tree file explorer | neo-tree.lua |
 
 ### Inside Neo-tree
 

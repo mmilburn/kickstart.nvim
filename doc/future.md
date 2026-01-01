@@ -72,35 +72,6 @@ linters_by_ft = {
 
 ---
 
-### Python LSP Improvements
-
-**Problem:** No Python LSP currently (only formatter/linter)
-**When Needed:** Python development with type hints, imports
-**Complexity:** Easy
-
-**Installation:**
-
-```lua
--- In lspconfig.lua servers:
-pyright = {
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = 'basic',  -- or 'strict'
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-      },
-    },
-  },
-},
-```
-
-**Alternative:** `basedpyright` (faster fork of pyright)
-
-**Plugin:** Built-in LSP
-
----
-
 ### Web Development (HTML/CSS/Tailwind)
 
 **Problem:** No LSP for HTML/CSS
@@ -120,39 +91,6 @@ cssls = {},
 tailwindcss = {
   filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
 },
-```
-
-**Plugin:** Built-in LSP
-
----
-
-### Rust Improvements
-
-**Problem:** Treesitter parser only, no LSP
-**When Needed:** Rust development
-**Complexity:** Easy
-
-**Installation:**
-
-```lua
--- In lspconfig.lua:
-rust_analyzer = {
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        allFeatures = true,
-      },
-      checkOnSave = {
-        command = 'clippy',
-      },
-    },
-  },
-},
-
--- Add formatter
-formatters_by_ft = {
-  rust = { 'rustfmt' },
-}
 ```
 
 **Plugin:** Built-in LSP
@@ -295,42 +233,6 @@ return {
 ---
 
 ## Enhanced Git Features
-
-### neogit
-
-**Repository:** [NeogitOrg/neogit](https://github.com/NeogitOrg/neogit)
-**Problem:** fugitive is powerful but less visual
-**When Needed:** Prefer magit-style Git interface
-**Complexity:** Easy
-
-**Features:**
-- Visual Git status interface
-- Stage/unstage with single key
-- Commit interface
-- Branch management
-- Log viewing
-
-**Installation:**
-
-```lua
-return {
-  'NeogitOrg/neogit',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'sindrets/diffview.nvim',
-    'nvim-telescope/telescope.nvim',
-  },
-  cmd = 'Neogit',
-  keys = {
-    { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neogit' },
-  },
-  opts = {},
-}
-```
-
-**Plugin:** [NeogitOrg/neogit](https://github.com/NeogitOrg/neogit)
-
----
 
 ### git-messenger.vim
 
@@ -559,30 +461,6 @@ return {
 
 ---
 
-### Spell Checking Enhancements
-
-**Problem:** Basic spell check only
-**When Needed:** Writing documentation, commit messages
-**Complexity:** Easy
-
-**Installation:**
-
-```lua
--- In options.lua or keymaps.lua
--- Enable for specific filetypes
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'markdown', 'gitcommit', 'text' },
-  callback = function()
-    vim.opt_local.spell = true
-    vim.opt_local.spelllang = 'en_us'
-  end,
-})
-```
-
-**Plugin:** Built-in
-
----
-
 ## UI Enhancements
 
 ### bufferline.nvim
@@ -619,23 +497,6 @@ vim.api.nvim_create_autocmd('FileType', {
 
 ---
 
-### nvim-notify
-
-**Repository:** [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify)
-**Problem:** Default notifications are basic
-**When Needed:** Better notification UI
-**Complexity:** Easy
-
-**Features:**
-- Fancy notification popups
-- Animation
-- History
-- Replaces vim.notify
-
-**Plugin:** [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify)
-
----
-
 ### Smooth Scrolling
 
 **Repository:** [karb94/neoscroll.nvim](https://github.com/karb94/neoscroll.nvim)
@@ -648,24 +509,6 @@ vim.api.nvim_create_autocmd('FileType', {
 ---
 
 ## Performance Monitoring
-
-### lazy.nvim Profiling
-
-**Problem:** Want to optimize startup time
-**When Needed:** Neovim feels slow
-**Complexity:** Easy
-
-**Usage:**
-
-```vim
-:Lazy profile
-```
-
-Shows plugin load times.
-
-**Plugin:** Built into lazy.nvim
-
----
 
 ### Startuptime Profiling
 
@@ -690,26 +533,21 @@ Shows detailed timing of every step.
 
 **High Priority (Easy Wins):**
 1. TypeScript/JavaScript LSP + Prettier
-2. Python LSP (pyright)
-3. trouble.nvim (better diagnostics)
-4. markdown-preview.nvim
-5. project.nvim (project switching)
+2. trouble.nvim (better diagnostics)
+3. markdown-preview.nvim
+4. project.nvim (project switching)
 
 **Medium Priority:**
-6. neotest (test runner)
-7. toggleterm.nvim (better terminal)
-8. persistence.nvim (sessions)
-9. bufferline.nvim (buffer tabs)
-10. neogit (visual Git interface)
+5. neotest (test runner)
+6. toggleterm.nvim (better terminal)
+7. persistence.nvim (sessions)
+8. bufferline.nvim (buffer tabs)
 
 **Low Priority (Nice to Have):**
-11. GitHub Copilot (requires subscription)
-12. alpha-nvim (startup screen)
-13. nvim-notify (fancy notifications)
-14. aerial.nvim (symbol outline)
-15. ChatGPT.nvim (requires API key)
-
----
+9. GitHub Copilot (requires subscription)
+10. alpha-nvim (startup screen)
+11. aerial.nvim (symbol outline)
+12. ChatGPT.nvim (requires API key)
 
 ## Next Steps
 
