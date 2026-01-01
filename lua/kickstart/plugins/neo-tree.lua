@@ -19,7 +19,7 @@ return {
         local buf = vim.api.nvim_get_current_buf()
         local bufname = vim.api.nvim_buf_get_name(buf)
         local buftype = vim.bo[buf].buftype
-        if buftype ~= '' or bufname == '' or bufname:match('^%w+://') then
+        if buftype ~= '' or bufname == '' or bufname:match '^%w+://' then
           vim.cmd 'Neotree show'
           return
         end
@@ -32,6 +32,7 @@ return {
   ---@module 'neo-tree'
   ---@type neotree.Config
   opts = {
+    close_if_last_window = true,
     filesystem = {
       window = {
         mappings = {
