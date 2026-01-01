@@ -13,7 +13,21 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    {
+      '\\',
+      function()
+        local buf = vim.api.nvim_get_current_buf()
+        local bufname = vim.api.nvim_buf_get_name(buf)
+        local buftype = vim.bo[buf].buftype
+        if buftype ~= '' or bufname == '' or bufname:match('^%w+://') then
+          vim.cmd 'Neotree show'
+          return
+        end
+        vim.cmd 'Neotree reveal'
+      end,
+      desc = 'NeoTree reveal',
+      silent = true,
+    },
   },
   ---@module 'neo-tree'
   ---@type neotree.Config
@@ -22,6 +36,7 @@ return {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['<space>'] = 'none',
         },
       },
     },

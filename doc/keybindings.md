@@ -265,7 +265,7 @@ DAP (Debug Adapter Protocol) keybindings.
 
 | Key | Mode | Action | Source |
 |-----|------|--------|--------|
-| `\` | Normal | Reveal/close Neo-tree file explorer | neo-tree.lua |
+| `\` | Normal | Reveal current file or open Neo-tree | neo-tree.lua |
 
 ### Inside Neo-tree
 
