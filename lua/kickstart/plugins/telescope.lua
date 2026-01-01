@@ -91,7 +91,8 @@ return {
         pickers = {
           find_files = {
             hidden = true,
-            find_command = { 'fd', '--type', 'f', '--hidden', '--exclude', '.git' },
+            find_command = vim.fn.executable 'fd' == 1 and { 'fd', '--type', 'f', '--hidden', '--exclude', '.git' }
+              or { 'rg', '--files', '--hidden', '--glob', '!.git/' },
           },
           buffers = {
             sort_lastused = true,
