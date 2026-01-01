@@ -42,12 +42,17 @@ return {
           vim.keymap.set(mode, l, r, opts)
         end
 
+        ---@type fun(direction: 'first'|'last'|'next'|'prev', opts?: Gitsigns.NavOpts)
+        local nav_hunk = gitsigns.nav_hunk
+        ---@type fun(direction: '@', opts?: Gitsigns.DiffthisOpts)
+        local diffthis = gitsigns.diffthis
+
         -- Navigation
         map('n', ']c', function()
           if vim.wo.diff then
             vim.cmd.normal { ']c', bang = true }
           else
-            gitsigns.nav_hunk 'next'
+            nav_hunk 'next'
           end
         end, { desc = 'Jump to next git [c]hange' })
 
@@ -55,7 +60,7 @@ return {
           if vim.wo.diff then
             vim.cmd.normal { '[c', bang = true }
           else
-            gitsigns.nav_hunk 'prev'
+            nav_hunk 'prev'
           end
         end, { desc = 'Jump to previous git [c]hange' })
 
@@ -76,7 +81,7 @@ return {
         map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
         map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
         map('n', '<leader>hD', function()
-          gitsigns.diffthis '@'
+          diffthis '@'
         end, { desc = 'git [D]iff against last commit' })
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
