@@ -327,9 +327,11 @@ return {
         'goimports-reviser',
         'google-java-format',
         'isort',
-        -- 'rustfmt', -- Install via rustup
+        'prettier',
         'stylua', -- Used to format Lua code
+        -- 'rustfmt', -- Install via rustup
         -- linters
+        'eslint',
         'flake8',
         'hadolint',
         'markdownlint',
