@@ -4,7 +4,7 @@ return {
   {
     'akinsho/bufferline.nvim',
     version = '*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
+    dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/tokyonight.nvim' },
     event = 'VeryLazy',
     keys = {
       { '<leader>bp', '<cmd>BufferLineCyclePrev<cr>', desc = 'Previous [B]uffer' },

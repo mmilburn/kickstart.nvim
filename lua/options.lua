@@ -105,4 +105,35 @@ vim.api.nvim_create_autocmd('FileType', {
     end
   end,
 })
+
+local function set_bufferline_separator_variants()
+  local function hl(name)
+    return vim.api.nvim_get_hl(0, { name = name, link = false })
+  end
+
+  local tabline = hl 'TabLine'
+  local status = hl 'StatusLine'
+  local normal = hl 'Normal'
+
+  local bg = tabline.bg or status.bg or normal.bg
+  local fg = tabline.fg or normal.fg
+
+  if not bg then
+    -- Provide a fallback color if you want separators even with transparent themes.
+    return
+  end
+
+  local sep = { fg = fg, bg = bg }
+  local sep_sel = { fg = fg, bg = bg, underline = true }
+
+  vim.api.nvim_set_hl(0, 'BufferLineSeparator', sep)
+  vim.api.nvim_set_hl(0, 'BufferLineSeparatorVisible', sep)
+  vim.api.nvim_set_hl(0, 'BufferLineSeparatorSelected', sep_sel)
+  vim.api.nvim_set_hl(0, 'BufferLineTabSeparator', sep)
+  vim.api.nvim_set_hl(0, 'BufferLineTabSeparatorSelected', sep_sel)
+  vim.api.nvim_set_hl(0, 'BufferLineOffsetSeparator', sep)
+end
+
+set_bufferline_separator_variants()
+vim.api.nvim_create_autocmd('ColorScheme', { callback = set_bufferline_separator_variants })
 -- vim: ts=2 sts=2 sw=2 et
