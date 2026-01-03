@@ -61,6 +61,8 @@ require('lazy').setup({
 
   require 'kickstart.plugins.render-markdown',
 
+  require 'kickstart.plugins.project',
+
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
