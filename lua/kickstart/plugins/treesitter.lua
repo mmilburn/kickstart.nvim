@@ -8,7 +8,32 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
-      ensure_installed = { 'asm', 'bash', 'c', 'diff', 'dockerfile', 'go', 'html', 'java', 'json', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'query', 'rust', 'toml', 'vim', 'vimdoc', 'yaml' },
+      ensure_installed = {
+        'asm',
+        'bash',
+        'c',
+        'cpp',
+        'css',
+        'diff',
+        'dockerfile',
+        'go',
+        'html',
+        'java',
+        'json',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'python',
+        'query',
+        'rust',
+        'toml',
+        'typescript',
+        'tsx',
+        'vim',
+        'vimdoc',
+        'yaml',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -47,6 +72,7 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         textobjects = {
           select = {
