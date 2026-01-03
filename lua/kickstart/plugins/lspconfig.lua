@@ -285,6 +285,19 @@ return {
             },
           },
         },
+        ts_ls = {
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = 'all',
+                includeInlayFunctionParameterTypeHints = true,
+              },
+            },
+          },
+        },
+        html = {},
+        cssls = {},
+        tailwindcss = {},
         -- This table contains config for all language servers that are *not* installed via Mason.
         -- Structure is identical to the mason table from above.
         others = {
