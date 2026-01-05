@@ -27,42 +27,42 @@ require('lazy').setup({
   -- modular approach: using `require 'path.name'` will
   -- include a plugin definition from file lua/path/name.lua
 
-  require 'kickstart.plugins.gitsigns',
-
-  require 'kickstart.plugins.which-key',
-
-  require 'kickstart.plugins.telescope',
-
-  require 'kickstart.plugins.lspconfig',
-
-  require 'kickstart.plugins.conform',
-
-  require 'kickstart.plugins.blink-cmp',
-
-  require 'kickstart.plugins.tokyonight',
-
-  require 'kickstart.plugins.todo-comments',
-
-  require 'kickstart.plugins.mini',
-
-  require 'kickstart.plugins.treesitter',
-
-  require 'kickstart.plugins.nvim-java',
-
-  require 'kickstart.plugins.neogit',
-
-  require 'kickstart.plugins.refactoring',
-
-  require 'kickstart.plugins.nvim-notify',
-
-  require 'kickstart.plugins.toggleterm',
-
-  require 'kickstart.plugins.bufferline',
-
-  require 'kickstart.plugins.render-markdown',
-
-  require 'kickstart.plugins.project',
-
+  -- require 'kickstart.plugins.gitsigns',
+  --
+  -- require 'kickstart.plugins.which-key',
+  --
+  -- require 'kickstart.plugins.telescope',
+  --
+  -- require 'kickstart.plugins.lspconfig',
+  --
+  -- require 'kickstart.plugins.conform',
+  --
+  -- require 'kickstart.plugins.blink-cmp',
+  --
+  -- require 'kickstart.plugins.tokyonight',
+  --
+  -- require 'kickstart.plugins.todo-comments',
+  --
+  -- require 'kickstart.plugins.mini',
+  --
+  -- require 'kickstart.plugins.treesitter',
+  --
+  -- require 'kickstart.plugins.nvim-java',
+  --
+  -- require 'kickstart.plugins.neogit',
+  --
+  -- require 'kickstart.plugins.refactoring',
+  --
+  -- require 'kickstart.plugins.nvim-notify',
+  --
+  -- require 'kickstart.plugins.toggleterm',
+  --
+  -- require 'kickstart.plugins.bufferline',
+  --
+  -- require 'kickstart.plugins.render-markdown',
+  --
+  -- require 'kickstart.plugins.project',
+  --
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -94,17 +94,17 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.debug',
+  -- require 'kickstart.plugins.indent_line',
+  -- require 'kickstart.plugins.lint',
+  -- require 'kickstart.plugins.autopairs',
+  -- require 'kickstart.plugins.neo-tree',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'kickstart.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
