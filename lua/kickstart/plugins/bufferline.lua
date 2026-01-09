@@ -23,8 +23,8 @@ return {
       options = {
         mode = 'buffers', -- 'tabs' or 'buffers'
         numbers = 'ordinal', -- 'none', 'ordinal', 'buffer_id', 'both'
-        close_command = 'bdelete! %d',
-        right_mouse_command = 'bdelete! %d',
+        close_command = 'bdelete %d',
+        right_mouse_command = 'bdelete %d',
         left_mouse_command = 'buffer %d',
         middle_mouse_command = nil,
 
