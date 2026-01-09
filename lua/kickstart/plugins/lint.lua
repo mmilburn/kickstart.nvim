@@ -10,15 +10,17 @@ return {
 
       lint.linters_by_ft = {
         asciidoc = { 'vale' },
+        bash = { 'shellcheck' },
         dockerfile = { 'hadolint' },
         gitcommit = { 'vale' },
+        javascript = { 'eslint' },
         mail = { 'vale' },
         markdown = { 'markdownlint', 'vale' },
         python = { 'flake8' },
-        shell = { 'shellcheck' },
+        sh = { 'shellcheck' },
         text = { 'vale' },
-        javascript = { 'eslint' },
         typescript = { 'eslint' },
+        zsh = { 'shellcheck' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
