@@ -2,22 +2,12 @@
 ---@type LazySpec
 return {
   'DrKJeff16/project.nvim',
-  cmd = { -- Lazy-load by commands
-    'Project',
-    'ProjectAdd',
-    'ProjectConfig',
-    'ProjectDelete',
-    'ProjectExportJSON',
-    'ProjectImportJSON',
-    'ProjectHealth',
-    'ProjectHistory',
-    'ProjectRecents',
-    'ProjectRoot',
-    'ProjectSession',
-  },
-  dependencies = { -- OPTIONAL
+  lazy = false,
+  dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',
   },
-  opts = {},
+  opts = {
+    manual_mode = false,
+  },
 }
