@@ -68,7 +68,7 @@ return {
         show_tab_indicators = true,
         show_duplicate_prefix = true,
         separator_style = 'slant', -- 'slant', 'padded_slant', 'slope', 'padded_slope', 'thick', 'thin'
-        always_show_bufferline = true,
+        always_show_bufferline = false,
         hover = {
           enabled = true,
           delay = 200,
