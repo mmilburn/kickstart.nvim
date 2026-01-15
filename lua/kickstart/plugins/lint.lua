@@ -20,6 +20,7 @@ return {
         sh = { 'shellcheck' },
         text = { 'vale' },
         typescript = { 'eslint' },
+        systemd = { 'systemd-analyze' },
         zsh = { 'shellcheck' },
       }
 

@@ -296,6 +296,7 @@ return {
           },
           html = {},
           cssls = {},
+          systemd_lsp = {},
           tailwindcss = {},
         },
         -- This table contains config for all language servers that are *not* installed via Mason.
