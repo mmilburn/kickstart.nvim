@@ -238,7 +238,20 @@ return {
           },
           bashls = {},
           dockerls = {},
-          jdtls = {},
+          jdtls = {
+            settings = {
+              jdtls = {
+                java = {
+                  format = {
+                    enabled = false,
+                    comments = {
+                      enabled = false,
+                    },
+                  },
+                },
+              },
+            },
+          },
           basedpyright = {
             settings = {
               basedpyright = {
