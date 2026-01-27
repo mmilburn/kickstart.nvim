@@ -10,5 +10,11 @@ return {
   },
   opts = {
     manual_mode = false,
+    patterns = { ---@type string[]
+      '.git',
+      '.jj',
+      'Makefile',
+      'pom.xml',
+    },
   },
 }
