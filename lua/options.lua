@@ -136,4 +136,6 @@ end
 
 set_bufferline_separator_variants()
 vim.api.nvim_create_autocmd('ColorScheme', { callback = set_bufferline_separator_variants })
+
+require('vim._core.ui2').enable()
 -- vim: ts=2 sts=2 sw=2 et

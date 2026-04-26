@@ -2,7 +2,7 @@ return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    main = 'nvim-treesitter', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     ---@module 'nvim-treesitter'
     ---@type TSConfig
@@ -70,51 +70,43 @@ return {
   },
   { -- Treesitter textobjects for advanced text operations
     'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = 'main',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup {
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true, -- Jump to next/prev if not currently in a textobject
-            keymaps = {
-              -- Functions
-              ['af'] = '@function.outer',
-              ['if'] = '@function.inner',
-              -- Classes
-              ['ac'] = '@class.outer',
-              ['ic'] = '@class.inner',
-              -- Parameters/arguments
-              ['aa'] = '@parameter.outer',
-              ['ia'] = '@parameter.inner',
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- Add to jumplist
-            goto_next_start = {
-              [']f'] = '@function.outer',
-              [']C'] = '@class.outer',
-              [']a'] = '@parameter.inner',
-            },
-            goto_previous_start = {
-              ['[f'] = '@function.outer',
-              ['[C'] = '@class.outer',
-              ['[a'] = '@parameter.inner',
-            },
-          },
-          swap = {
-            enable = true,
-            swap_next = {
-              ['<leader>a'] = '@parameter.inner',
-            },
-            swap_previous = {
-              ['<leader>A'] = '@parameter.inner',
-            },
-          },
-        },
+      require('nvim-treesitter-textobjects').setup {
+        select = { lookahead = true },
+        move = { set_jumps = true },
       }
+
+      -- Select
+      local select = require 'nvim-treesitter-textobjects.select'
+      local keymaps = {
+        af = '@function.outer',
+        ['if'] = '@function.inner',
+        ac = '@class.outer',
+        ic = '@class.inner',
+        aa = '@parameter.outer',
+        ia = '@parameter.inner',
+      }
+      for key, query in pairs(keymaps) do
+        vim.keymap.set({ 'x', 'o' }, key, function()
+          select.select_textobject(query, 'textobjects')
+        end)
+      end
+
+      -- Move
+      local move = require 'nvim-treesitter-textobjects.move'
+      vim.keymap.set({ 'n', 'x', 'o' }, ']f', function() move.goto_next_start('@function.outer', 'textobjects') end)
+      vim.keymap.set({ 'n', 'x', 'o' }, ']C', function() move.goto_next_start('@class.outer', 'textobjects') end)
+      vim.keymap.set({ 'n', 'x', 'o' }, ']a', function() move.goto_next_start('@parameter.inner', 'textobjects') end)
+      vim.keymap.set({ 'n', 'x', 'o' }, '[f', function() move.goto_previous_start('@function.outer', 'textobjects') end)
+      vim.keymap.set({ 'n', 'x', 'o' }, '[C', function() move.goto_previous_start('@class.outer', 'textobjects') end)
+      vim.keymap.set({ 'n', 'x', 'o' }, '[a', function() move.goto_previous_start('@parameter.inner', 'textobjects') end)
+
+      -- Swap
+      local swap = require 'nvim-treesitter-textobjects.swap'
+      vim.keymap.set('n', '<leader>a', function() swap.swap_next '@parameter.inner' end)
+      vim.keymap.set('n', '<leader>A', function() swap.swap_previous '@parameter.inner' end)
     end,
   },
 }
