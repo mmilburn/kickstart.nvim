@@ -309,7 +309,6 @@ return {
           },
           html = {},
           cssls = {},
-          systemd_lsp = {},
           tailwindcss = {},
         },
         -- This table contains config for all language servers that are *not* installed via Mason.
@@ -318,6 +317,10 @@ return {
           -- dartls = {},
         },
       }
+
+      if vim.fn.has 'linux' == 1 then
+        servers.mason.systemd_lsp = {}
+      end
 
       -- Ensure the servers and tools above are installed
       --

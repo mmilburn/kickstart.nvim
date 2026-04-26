@@ -20,9 +20,12 @@ return {
         sh = { 'shellcheck' },
         text = { 'vale' },
         typescript = { 'eslint' },
-        systemd = { 'systemd-analyze' },
         zsh = { 'shellcheck' },
       }
+
+      if vim.fn.has 'linux' == 1 then
+        lint.linters_by_ft.systemd = { 'systemd-analyze' }
+      end
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
