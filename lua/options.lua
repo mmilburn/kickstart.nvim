@@ -136,4 +136,24 @@ end
 
 set_bufferline_separator_variants()
 vim.api.nvim_create_autocmd('ColorScheme', { callback = set_bufferline_separator_variants })
+
+require('vim._core.ui2').enable()
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'VeryLazy',
+  once = true,
+  callback = function()
+    local _notify = vim.notify
+    local notify_log = vim.fn.stdpath 'log' .. '/notify.log'
+    vim.notify = function(msg, level, opts)
+      local fh = io.open(notify_log, 'a')
+      if fh then
+        local level_name = vim.log.levels[level] or tostring(level or '')
+        fh:write(os.date '%Y-%m-%dT%H:%M:%S' .. ' [' .. level_name .. '] ' .. tostring(msg) .. '\n')
+        fh:close()
+      end
+      return _notify(msg, level, opts)
+    end
+  end,
+})
 -- vim: ts=2 sts=2 sw=2 et
