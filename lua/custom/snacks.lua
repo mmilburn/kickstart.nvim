@@ -11,6 +11,17 @@ return {
       input = { enabled = true },
       notifier = { enabled = true },
       quickfile = { enabled = true },
+      terminal = {
+        enabled = true,
+        win = {
+          keys = {
+            nav_h = { '<C-h>', '<cmd>wincmd h<cr>', desc = 'Move to left window', mode = { 'n', 't' } },
+            nav_j = { '<C-j>', '<cmd>wincmd j<cr>', desc = 'Move to lower window', mode = { 'n', 't' } },
+            nav_k = { '<C-k>', '<cmd>wincmd k<cr>', desc = 'Move to upper window', mode = { 'n', 't' } },
+            nav_l = { '<C-l>', '<cmd>wincmd l<cr>', desc = 'Move to right window', mode = { 'n', 't' } },
+          },
+        },
+      },
       words = {
         enabled = true,
         -- Yield to LSP document_highlight when a client supports it; snacks.words
@@ -24,6 +35,11 @@ return {
           return true
         end,
       },
+    },
+    keys = {
+      { '<leader>tt', function() Snacks.terminal.toggle(nil, { win = { position = 'bottom' } }) end, desc = 'Toggle terminal', mode = { 'n', 't' } },
+      { '<leader>tf', function() Snacks.terminal.toggle(nil, { win = { position = 'float' } }) end, desc = 'Toggle [F]loating terminal' },
+      { '<leader>tv', function() Snacks.terminal.toggle(nil, { win = { position = 'right' } }) end, desc = 'Toggle [V]ertical terminal', mode = { 'n', 't' } },
     },
   },
 }
