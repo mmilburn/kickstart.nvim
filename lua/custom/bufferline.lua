@@ -19,6 +19,37 @@ return {
       { '<leader>b4', '<cmd>BufferLineGoToBuffer 4<cr>', desc = 'Go to buffer 4' },
       { '<leader>b5', '<cmd>BufferLineGoToBuffer 5<cr>', desc = 'Go to buffer 5' },
     },
+    config = function(_, opts)
+      require('bufferline').setup(opts)
+
+      local function set_separator_highlights()
+        local function hl(name)
+          return vim.api.nvim_get_hl(0, { name = name, link = false })
+        end
+        local tabline = hl 'TabLine'
+        local status = hl 'StatusLine'
+        local normal = hl 'Normal'
+        local bg = tabline.bg or status.bg or normal.bg
+        local fg = tabline.fg or normal.fg
+        if not bg then
+          return
+        end
+        local sep = { fg = fg, bg = bg }
+        local sep_sel = { fg = fg, bg = bg, underline = true }
+        vim.api.nvim_set_hl(0, 'BufferLineSeparator', sep)
+        vim.api.nvim_set_hl(0, 'BufferLineSeparatorVisible', sep)
+        vim.api.nvim_set_hl(0, 'BufferLineSeparatorSelected', sep_sel)
+        vim.api.nvim_set_hl(0, 'BufferLineTabSeparator', sep)
+        vim.api.nvim_set_hl(0, 'BufferLineTabSeparatorSelected', sep_sel)
+        vim.api.nvim_set_hl(0, 'BufferLineOffsetSeparator', sep)
+      end
+
+      set_separator_highlights()
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        group = vim.api.nvim_create_augroup('bufferline-highlights', { clear = true }),
+        callback = set_separator_highlights,
+      })
+    end,
     opts = {
       options = {
         mode = 'buffers', -- 'tabs' or 'buffers'
