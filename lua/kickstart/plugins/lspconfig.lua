@@ -85,13 +85,8 @@ return {
           -- Show documentation for what's under cursor
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
-          -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
-          map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-
-          -- Execute a code action, usually your cursor needs to be on top of an error
-          -- or a suggestion from your LSP for this to activate.
-          map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+          -- grn (rename) and gra (code action) are intentionally omitted: Neovim 0.11+
+          -- sets them as built-in defaults on LspAttach, so redefining them is redundant.
 
           -- Find references for the word under your cursor.
           map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
