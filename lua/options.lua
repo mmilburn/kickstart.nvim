@@ -87,12 +87,16 @@ local function enable_spell()
   vim.opt_local.spelllang = 'en_us'
 end
 
+local spell_augroup = vim.api.nvim_create_augroup('spell_options', { clear = true })
+
 vim.api.nvim_create_autocmd('FileType', {
+  group = spell_augroup,
   pattern = { 'asciidoc', 'gitcommit', 'gitrebase', 'NeogitCommitMessage', 'jj', 'jjdescription', 'mail', 'markdown', 'text' },
   callback = enable_spell,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+  group = spell_augroup,
   callback = function(args)
     if vim.bo[args.buf].buftype ~= '' then
       return
