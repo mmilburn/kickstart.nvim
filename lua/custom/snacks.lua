@@ -4,12 +4,17 @@ return {
   {
     'folke/snacks.nvim',
     priority = 1000,
+    lazy = false,
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
       image = { enabled = true },
       input = { enabled = true },
-      notifier = { enabled = true },
+      notifier = {
+        enabled = true,
+        timeout = 3000,
+        style = 'compact',
+      },
       quickfile = { enabled = true },
       terminal = {
         enabled = true,
@@ -37,9 +42,43 @@ return {
       },
     },
     keys = {
-      { '<leader>tt', function() Snacks.terminal.toggle(nil, { win = { position = 'bottom' } }) end, desc = 'Toggle terminal', mode = { 'n', 't' } },
-      { '<leader>tf', function() Snacks.terminal.toggle(nil, { win = { position = 'float' } }) end, desc = 'Toggle [F]loating terminal' },
-      { '<leader>tv', function() Snacks.terminal.toggle(nil, { win = { position = 'right' } }) end, desc = 'Toggle [V]ertical terminal', mode = { 'n', 't' } },
+      {
+        '<leader>nh',
+        function()
+          Snacks.notifier.show_history()
+        end,
+        desc = '[N]otification [H]istory',
+      },
+      {
+        '<leader>nd',
+        function()
+          Snacks.notifier.hide()
+        end,
+        desc = '[N]otification [D]ismiss',
+      },
+      {
+        '<leader>tt',
+        function()
+          Snacks.terminal.toggle(nil, { win = { position = 'bottom' } })
+        end,
+        desc = 'Toggle terminal',
+        mode = { 'n', 't' },
+      },
+      {
+        '<leader>tf',
+        function()
+          Snacks.terminal.toggle(nil, { win = { position = 'float' } })
+        end,
+        desc = 'Toggle [F]loating terminal',
+      },
+      {
+        '<leader>tv',
+        function()
+          Snacks.terminal.toggle(nil, { win = { position = 'right' } })
+        end,
+        desc = 'Toggle [V]ertical terminal',
+        mode = { 'n', 't' },
+      },
     },
   },
 }
